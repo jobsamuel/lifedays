@@ -1,11 +1,22 @@
 <!DOCTYPE>
 <html>
 <head>
-	<title></title>
-	<!--TODO-->
-
+	<!--Title-->
+	<title ng-bind="pageTitle"></title>
+	<!--Metadata-->    
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--CSS-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="vendor/components-font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<!--Javascript-->
+	<script src="vendor/angular/angular.min.js"></script>
+	<script src="vendor/angular-ui-router/release/angular-ui-router.min.js"></script>
+	<script src="js/main.js"></script>
 </head>
 <body>
-	<!--TODO-->
+	<!--The View-->
+	<div class="container-fluid" ui-view></div>
 </body>
 </html>
