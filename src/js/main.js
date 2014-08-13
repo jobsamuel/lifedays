@@ -9,12 +9,28 @@ angular.module('app', ['ui.router'])
 		.state('home', {
 			url: '/',
 			templateUrl: 'partials/home-tpl.html',
-			controller: 'appController'
+			controller: 'appController',
+			data: {
+				pageTitle: 'Life Days'
+			}
 		});
 
 	$urlRouterProvider.otherwise('/');
 	
 	$locationProvider.html5Mode(true);
+
+}])
+
+.run(['$rootScope', '$state', function($rootScope, $state) {
+
+	$rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
+		
+		// Change the page title according the current view.
+		if (angular.isDefined(toState.data.pageTitle)) {
+			$rootScope.pageTitle = $state.current.data.pageTitle;
+		}
+		
+	});
 
 }])
 
