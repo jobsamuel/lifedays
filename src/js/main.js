@@ -54,7 +54,7 @@ angular.module('app', ['ui.router'])
 		var m = new Date().getMonth(); 
 		var y = new Date().getFullYear();
 		var age = 0;
-		if (d >= day && m >= month) {
+		if (d >= day && (m + 1) >= month) {
 			age = y-year;
 			return age;
 		} else {
@@ -64,13 +64,15 @@ angular.module('app', ['ui.router'])
 	}
 
 	var daysSince = function() {
-		// TODO
+		var d = new Date().getDate();
+		var m = new Date().getMonth();
+
 	}
 
 	$scope.lifedays = function(day, month, year) { // Prototyping
 		var agesLived = age(day, month, year); 
 		var daysLived = agesLived*365 + leapYear(year);
-		$scope.lived = "You have lived " + daysLived + " days."
+		$scope.lived = "You have lived " + daysLived + " days.";
 	}
 
 }]);
