@@ -49,6 +49,30 @@ angular.module('app', ['ui.router'])
 		return bi;
 	}
 
+	var age = function (day, month, year) {
+		var d = new Date().getDate();
+		var m = new Date().getMonth(); 
+		var y = new Date().getFullYear();
+		var age = 0;
+		if (d >= day && m >= month) {
+			age = y-year;
+			return age;
+		} else {
+			age = y-year-1;
+			return age;
+		}
+	}
+
+	var daysSince = function() {
+		// TODO
+	}
+
+	$scope.lifedays = function(day, month, year) { // Prototyping
+		var agesLived = age(day, month, year); 
+		var daysLived = agesLived*365 + leapYear(year);
+		$scope.lived = "You have lived " + daysLived + " days."
+	}
+
 }]);
 
 })();
