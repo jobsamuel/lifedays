@@ -36,43 +36,15 @@ angular.module('app', ['ui.router'])
 
 .controller('appController', ['$scope', function($scope) {
 	
-	var leapYear = function (y) {
-		var year = new Date().getFullYear();
-		var bi = 0;
-		for (var i = y; i < year; i++) {
-			if (((i % 4 == 0) && (i % 100 != 0)) || (i % 400 == 0)) {
-				bi += 1;
-			} else {
-				bi += 0;
-			}
-		}
-		return bi;
-	}
+	$scope.lifedays = function(day, month, year) { 
+	
+		var m = month - 1; 
 
-	var age = function (day, month, year) {
-		var d = new Date().getDate();
-		var m = new Date().getMonth(); 
-		var y = new Date().getFullYear();
-		var age = 0;
-		if (d >= day && (m + 1) >= month) {
-			age = y-year;
-			return age;
-		} else {
-			age = y-year-1;
-			return age;
-		}
-	}
-
-	var daysSince = function() {
-		var d = new Date().getDate();
-		var m = new Date().getMonth();
-
-	}
-
-	$scope.lifedays = function(day, month, year) { // Prototyping
-		var agesLived = age(day, month, year); 
-		var daysLived = agesLived*365 + leapYear(year);
-		$scope.lived = "You have lived " + daysLived + " days.";
+		var a = moment([year, m, day]);
+		var b = moment().format('YYYY, MM, DD');
+		var c = a.diff(b, 'days')*(-1);
+		
+		$scope.lived = c;
 	}
 
 }]);
