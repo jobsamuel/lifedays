@@ -41,9 +41,9 @@ angular.module('app', ['ui.router'])
 	$scope.lifedays = function(day, month, year) { 
 	
 		var m = month - 1; 
-
+		var t = new Date();
 		var a = moment([year, m, day]);
-		var b = moment().format('YYYY, MM, DD');
+		var b = moment(t);
 		var c = a.diff(b, 'days')*(-1);
 		
 		$scope.lived = c;
