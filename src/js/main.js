@@ -36,6 +36,8 @@ angular.module('app', ['ui.router'])
 
 .controller('appController', ['$scope', function($scope) {
 	
+	$scope.result = false;
+
 	$scope.lifedays = function(day, month, year) { 
 	
 		var m = month - 1; 
@@ -45,8 +47,23 @@ angular.module('app', ['ui.router'])
 		var c = a.diff(b, 'days')*(-1);
 		
 		$scope.lived = c;
+
+		$scope.result = true;
 	}
 
-}]);
+}])
+
+.directive('ngEnter', function () { // A directive by EpokK (https://gist.github.com/EpokK/5884263)
+    return function (scope, elements, attrs) {
+       	elements.bind('keydown keypress', function (event) {
+           	if (event.which === 13) {
+                scope.$apply(function () {
+                    scope.$eval(attrs.ngEnter);
+                });
+                event.preventDefault();
+            }
+        });
+    };
+});
 
 })();
