@@ -1,26 +1,22 @@
 <div class="row"> 
-	<div class="col-md-4 col-md-offset-4">
-		<h2> What's your birthday? </h2>
+	<div class="col-md-10 col-md-offset-1" ng-hide="result">
 		<div class="row">
 		  <div class="col-xs-4">
-		    <input type="number" class="form-control" placeholder="Day" ng-model="d">
+		    <input class="form-custom" placeholder="Day" ng-model="d">
 		  </div>
 		  <div class="col-xs-4">
-		    <input type="number" class="form-control" placeholder="Month" ng-model="m">
+		    <input class="form-custom" placeholder="Month" ng-model="m">
 		  </div>
 		  <div class="col-xs-4">
-		    <input type="number" class="form-control" placeholder="Year" ng-model="y">
+		    <input class="form-custom" placeholder="Year" ng-model="y" ng-enter="lifedays(d, m, y)">
 		  </div>
 		</div>
 		<br>
-		<button class="btn btn-info" ng-click="lifedays(d, m, y)">Calculate</button>
 	</div>
-	<div class="col-md-4 col-md-offset-4">
-		<br>
-		<div class="panel panel-default">
-		  <div class="panel-body">
-		    {{ lived }}
-		  </div>
-		</div>
+	<div class="col-md-6 col-md-offset-3 question" ng-hide="result">
+		<h3> How many days have you been alive? </h3>
+	</div>
+	<div class="col-md-10 col-md-offset-1" ng-show="result">
+		<h1 class="lived"> {{ lived }}</h1>
 	</div>
 </div>
