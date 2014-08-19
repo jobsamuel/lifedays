@@ -19,7 +19,7 @@ module.exports = function (grunt) {
 		    options: {
 		      files: ['package.json'],
 		      updateConfigs: [],
-		      commit: true,
+		      commit: false,
 		      commitMessage: 'Release v%VERSION%',
 		      commitFiles: ['package.json'],
 		      createTag: false,
@@ -41,7 +41,7 @@ module.exports = function (grunt) {
 		// Minify Javascript files. 
 		uglify: {
 			options: {
-				banner: '/* <%= pkg.name %> v<%= pkg.version %> <% (pkg.homepage) %>\n' +
+				banner: '/* <%= pkg.name %> v<%= pkg.version %> (<%= pkg.homepage %>)\n' +
 						' * Copyright © <%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
 						' * License <%= pkg.license %>\n' +
 						' */\n'
@@ -58,7 +58,7 @@ module.exports = function (grunt) {
 		// Minify CSS files.
 		cssmin: {
 			options: {
-				banner: '/* <%= pkg.name %> v<%= pkg.version %> <% (pkg.homepage) %>\n' +
+				banner: '/* <%= pkg.name %> v<%= pkg.version %> (<%= pkg.homepage %>)\n' +
 						' * Copyright © <%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
 						' * License <%= pkg.license %>\n' +
 						' */\n'
@@ -76,9 +76,12 @@ module.exports = function (grunt) {
 		copy: {
 		  main: {
 		    files: [
-			    //{expand: true, cwd: 'src/vendor/', src: ['**/*'], dest: 'build/vendor/'},
-			    {expand: true, cwd: 'src/partials/', src: ['*'], dest: 'build/partials/'},
-			    {src: ['package.json'], dest: 'build/'}
+			    {expand: true, cwd: 'src/vendor/angular/', src: ['angular.min.js'], dest: 'build/vendor/'},
+			    {expand: true, cwd: 'src/vendor/angular-ui-router/release/', src: ['angular-ui-router.min.js'], dest: 'build/vendor/'},
+			    {expand: true, cwd: 'src/vendor/moment/min/', src: ['moment.min.js'], dest: 'build/vendor/'},
+			    {expand: true, cwd: 'src/vendor/bootstrap/dist/css/', src: ['bootstrap.min.css'], dest: 'build/vendor/'},
+			    {expand: true, cwd: 'src/vendor/components-font-awesome/css/', src: ['font-awesome.min.css'], dest: 'build/vendor/'},
+			    {expand: true, cwd: 'src/partials/', src: ['*'], dest: 'build/partials/'}
 		    ]
 		  }
 		},
@@ -97,19 +100,20 @@ module.exports = function (grunt) {
 		concat: {
 	    	options: {
 		      stripBanners: true,
-		      banner: 	'/* <%= pkg.name %> v<%= pkg.version %> <% (pkg.homepage) %>\n' +
+		      banner: 	'/* <%= pkg.name %> v<%= pkg.version %> (<%= pkg.homepage %>)\n' +
 						' * Copyright © <%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
 						' * License <%= pkg.license %>\n' +
 						' */\n'
 	    	},
 		    dist: {
-		      src: ['src/server.js'],
-		      dest: 'build/server.js'
+		      src: ['src/app.js'],
+		      dest: 'build/app.js'
 		    }
 		}
 		
 	});
 
 	// Default Grunt task(s).
-	grunt.registerTask('default', ['bump', 'clean', 'copy', 'uglify', 'cssmin', 'processhtml', 'concat']);
+	grunt.registerTask('default', ['clean', 'copy', 'uglify', 'cssmin', 'processhtml', 'concat']);
+	grunt.registerTask('build', ['bump', 'clean', 'copy', 'uglify', 'cssmin', 'processhtml', 'concat']);
 }

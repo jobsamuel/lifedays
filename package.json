@@ -1,6 +1,6 @@
 {
   "name": "lifedays",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "How much time have you been alive?",
   "main": "src/app.js",
   "scripts": {
