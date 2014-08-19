@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<!--Title-->
+	<title ng-bind="pageTitle"></title>
+	
+	<!--Metadata-->    
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<!--CSS-->
+	<link href='http://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="vendor/bootstrap.min.css">
+	<link rel="stylesheet" href="vendor/font-awesome.min.css">
+	<link rel="stylesheet" href="css/style.min.css">
+	
+	<!--Javascript-->
+	<script src="vendor/angular.min.js"></script>
+	<script src="vendor/angular-ui-router.min.js"></script>
+	<script src="vendor/moment.min.js"></script>
+	<script src="js/main.min.js"></script>
+</head>
+<body>
+	<!--The View-->
+	<div class="container-fluid view" ui-view></div>
+</body>
+</html>
