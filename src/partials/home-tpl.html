@@ -1,22 +1,42 @@
 <div class="row"> 
 	<div class="col-md-10 col-md-offset-1" ng-hide="result">
 		<div class="row">
-		  <div class="col-xs-4">
-		    <input class="form-custom" placeholder="Day" ng-model="d">
-		  </div>
-		  <div class="col-xs-4">
-		    <input class="form-custom" placeholder="Month" ng-model="m">
-		  </div>
-		  <div class="col-xs-4">
-		    <input class="form-custom" placeholder="Year" ng-model="y" ng-enter="lifedays(d, m, y)">
-		  </div>
+		  <form name="birth" role="form">
+		  	<div class="col-xs-4">
+		    	<input
+		    		class="form-custom"
+		    		placeholder="Day"  
+		    		type="text"  
+		    		ng-model="d"
+		    		maxlength="2"
+		    		required>
+		 	</div>
+		  	<div class="col-xs-4">
+		    	<input
+		    		class="form-custom" 
+		    		placeholder="Month" 
+		    		type="text" 
+		    		ng-model="m"
+		    		maxlength="2"
+		    		required>
+		  	</div>
+		  	<div class="col-xs-4">
+		    	<input
+		    		class="form-custom"
+		    		placeholder="Year"  
+		    		type="text" 
+		    		ng-model="y"
+		    		maxlength="4"
+		    		required
+		    		ng-enter="lifedays(d, m, y)">
+		  	</div>
+		  </form>
 		</div>
-		<br>
 	</div>
 	<div class="col-md-6 col-md-offset-3 question" ng-hide="result">
-		<h3> How many days have you been alive? </h3>
+		<h3> <a ui-sref="home" ng-click="lifedays(d, m, y)"> How many days have you been alive? </a> </h3>
 	</div>
 	<div class="col-md-10 col-md-offset-1" ng-show="result">
-		<h1 class="lived"> {{ lived }}</h1>
+		<h1 class="lived"><a ui-sref="home" ng-click="result=false"> {{ lived }} </a></h1>
 	</div>
 </div>
