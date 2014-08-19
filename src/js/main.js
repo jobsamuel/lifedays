@@ -40,15 +40,19 @@ angular.module('app', ['ui.router'])
 
 	$scope.lifedays = function(day, month, year) { 
 	
-		var m = month - 1; 
-		var t = new Date();
-		var a = moment([year, m, day]);
-		var b = moment(t);
-		var c = a.diff(b, 'days')*(-1);
-		
-		$scope.lived = c;
+		if (!isNaN(parseInt(day)) && (parseInt(day) <= 31) && (!isNaN(parseInt(month)) && parseInt(month) <=12) && ( !isNaN(parseInt(year)) && parseInt(year) >= 1900 && parseInt(year) <= 2014)) {
+			
+			var m = month - 1; 
+			var t = new Date();
+			var a = moment([year, m, day]);
+			var b = moment(t);
+			var c = a.diff(b, 'days')*(-1);
+			
+			$scope.lived = c;
 
-		$scope.result = true;
+			$scope.result = true;
+		} 
+		
 	}
 
 }])
