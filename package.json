@@ -1,7 +1,7 @@
 {
   "name": "lifedays",
   "version": "0.1.0",
-  "description": "How much time have you been alive?",
+  "description": "How many days have you been alive?",
   "main": "src/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

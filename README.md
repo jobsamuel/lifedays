@@ -1,4 +1,4 @@
 lifedays
 ========
 
-How much are you been alive?
+An app that calculcate the days you have been alive.
