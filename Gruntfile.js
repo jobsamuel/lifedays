@@ -115,5 +115,5 @@ module.exports = function (grunt) {
 
 	// Default Grunt task(s).
 	grunt.registerTask('default', ['clean', 'copy', 'uglify', 'cssmin', 'processhtml', 'concat']);
-	grunt.registerTask('build', ['bump', 'clean', 'copy', 'uglify', 'cssmin', 'processhtml', 'concat']);
+	grunt.registerTask('build', ['bump:minor', 'clean', 'copy', 'uglify', 'cssmin', 'processhtml', 'concat']);
 }
