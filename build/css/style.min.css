@@ -1,4 +1,4 @@
-/* lifedays v0.1.0 (https://github.com/jobsamuel/lifedays)
+/* lifedays v0.2.0 (https://github.com/jobsamuel/lifedays)
  * Copyright © 2014 Jobsamuel Núñez
  * License MIT
  */
