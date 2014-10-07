@@ -1,6 +1,4 @@
 var express = require('express')
-,	session = require('express-session')
-,	passport = require('passport')
 ,	logfmt = require('logfmt')
 ,	swig = require('swig')
 ,	router = require('./routes/router')
@@ -18,17 +16,11 @@ app.set('port', process.env.PORT || 3000);
 // and for logging objects to a stream in logfmt format.
 app.use(logfmt.requestLogger());
 
-// Session configuration.
-app.use(session({ secret: 'pass', /*cookie: { maxAge: 3600000 },*/ resave: true, saveUninitialized: true }));
-
-// Passport initialization.
-app.use(passport.initialize());
-app.use(passport.session());
-
 // Swig configuration.
 app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
-app.set('views', __dirname + '/views');
+//app.set('views', __dirname + '/views');
+app.use(express.static(__dirname + '/vendor'));
 
 // Routes.
 app.use('/', router);

@@ -26,6 +26,3 @@ node_modules
 
 # Bower
 app/vendor
-
-# Token
-app/config/token
